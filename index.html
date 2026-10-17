@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guide Monstera</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1E5C42">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Newsreader:wght@400;600&display=swap">
+<style>
+:root{--bg:#F2F5EF;--surface:#FFFFFF;--ink:#14281F;--muted:#4F6358;--leaf:#1E5C42;--leaf-ink:#FFFFFF;--young:#C6E05A;--line:#D3DDD2;--warn:#8A3B12;--warn-bg:#FBE9DC;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0D1B15;--surface:#15291F;--ink:#E7F0E6;--muted:#9DB3A5;--leaf:#6FCB9B;--leaf-ink:#0D1B15;--young:#C6E05A;--line:#264236;--warn:#F2B994;--warn-bg:#3A2418}}
+:root[data-theme="dark"]{--bg:#0D1B15;--surface:#15291F;--ink:#E7F0E6;--muted:#9DB3A5;--leaf:#6FCB9B;--leaf-ink:#0D1B15;--young:#C6E05A;--line:#264236;--warn:#F2B994;--warn-bg:#3A2418}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.6 Newsreader,Georgia,serif}
+h1,h2,h3,.tab,button,label,select,input{font-family:"Bricolage Grotesque",system-ui,sans-serif}
+header{padding:28px 20px 8px;max-width:760px;margin:0 auto;display:flex;gap:16px;align-items:center}
+header svg{flex:none;width:92px;height:92px}
+h1{font-size:2.3rem;line-height:1.05;margin:0;font-weight:800;letter-spacing:-.02em}
+header p{margin:6px 0 0;color:var(--muted);font-size:1rem}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap;padding:8px 12px;margin-top:12px;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+.tab{border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:8px 14px;border-radius:999px;margin-right:6px;font-size:.95rem;font-weight:600;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--leaf);color:var(--leaf-ink);border-color:var(--leaf)}
+.tab:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--young);outline-offset:2px}
+main{max-width:760px;margin:0 auto;padding:20px}
+section[hidden]{display:none}
+h2{font-size:1.7rem;margin:0 0 4px;font-weight:800;letter-spacing:-.01em}
+.lead{color:var(--muted);margin:0 0 18px}
+h3{font-size:1.05rem;margin:22px 0 6px;font-weight:600}
+p{margin:0 0 12px;max-width:68ch}
+ul{padding-left:20px;margin:0 0 12px;max-width:68ch}
+li{margin-bottom:6px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:14px 0}
+.warn{background:var(--warn-bg);color:var(--warn);border-color:transparent}
+.warn p{margin:0}
+.var{border-left:5px solid var(--leaf);border-radius:4px 14px 14px 4px}
+.var h3{margin:0 0 2px;font-size:1.15rem}
+.var .sci{font-style:italic;color:var(--muted);margin:0 0 8px}
+.var .meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.92rem;color:var(--muted);margin:0}
+.var .meta b{color:var(--ink);font-weight:600}
+.calc label{display:block;font-weight:600;margin-bottom:6px;font-size:.95rem}
+.calc select,.calc input{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:1rem;margin-bottom:12px}
+.out{background:var(--leaf);color:var(--leaf-ink);border-radius:12px;padding:14px 16px;font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:1.05rem;line-height:1.4}
+.out b{font-size:1.5rem;display:block}
+.tl{list-style:none;padding:0;margin:0;border-left:3px solid var(--line);margin-left:8px}
+.tl li{position:relative;padding:0 0 18px 20px;margin:0}
+.tl li::before{content:"";position:absolute;left:-9px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--young);border:3px solid var(--leaf)}
+.tl strong{font-family:"Bricolage Grotesque",system-ui,sans-serif;display:block}
+table{width:100%;border-collapse:collapse;font-size:.95rem;margin:8px 0 14px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:600}
+.scroll{overflow-x:auto}
+@media (prefers-reduced-motion:no-preference){section:not([hidden]){animation:in .25s ease-out}@keyframes in{from{opacity:0}to{opacity:1}}}
+
+.btn{border:1px solid var(--leaf);background:var(--leaf);color:var(--leaf-ink);padding:10px 16px;border-radius:10px;font-weight:600;font-size:.95rem;cursor:pointer;display:inline-block}
+.btn.alt{background:transparent;color:var(--leaf)}
+.btn.danger{background:transparent;color:var(--warn);border-color:var(--warn)}
+.btn:disabled{opacity:.5;cursor:default}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
+.hid{display:none}
+.fld{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+.fld .full{grid-column:1/-1}
+@media(max-width:520px){.fld{grid-template-columns:1fr}}
+.pc{display:grid;grid-template-columns:120px 1fr;gap:14px}
+@media(max-width:520px){.pc{grid-template-columns:1fr}.ph{max-width:200px}}
+.ph{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:10px;background:var(--line)}
+.ph.empty{display:grid;place-items:center;color:var(--muted);font-size:.85rem}
+.pc h3{margin:0}
+.sub{color:var(--muted);font-size:.92rem;margin:2px 0 10px}
+.row{display:grid;grid-template-columns:84px 1fr;gap:8px;padding:7px 0;border-top:1px solid var(--line);font-size:.95rem;line-height:1.4}
+.row b{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:600}
+.row.warn span{color:var(--warn);font-weight:600}
+.th{display:flex;gap:8px;margin-top:12px;overflow-x:auto}
+.th figure{margin:0;flex:none;text-align:center;font-size:.8rem;color:var(--muted)}
+.th img{width:64px;height:84px;object-fit:cover;border-radius:8px;display:block}
+.ai{white-space:pre-wrap;background:var(--bg);border:1px dashed var(--leaf);border-radius:10px;padding:12px;margin-top:12px;font-size:.95rem}
+.alert{background:var(--young);color:#14281F;border-radius:12px;padding:12px 16px;margin:0 0 14px;font-family:"Bricolage Grotesque",system-ui,sans-serif}
+.note{color:var(--muted);font-size:.88rem;margin:6px 0}
+.hist{margin:10px 0 0;font-size:.85rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+<svg viewBox="0 0 100 100" aria-hidden="true"><defs><mask id="m"><rect width="100" height="100" fill="#fff"/><g fill="#000"><ellipse cx="30" cy="48" rx="3" ry="8" transform="rotate(-30 30 48)"/><ellipse cx="26" cy="64" rx="3" ry="8" transform="rotate(-50 26 64)"/><ellipse cx="70" cy="48" rx="3" ry="8" transform="rotate(30 70 48)"/><ellipse cx="74" cy="64" rx="3" ry="8" transform="rotate(50 74 64)"/><circle cx="40" cy="34" r="3.5"/><circle cx="60" cy="34" r="3.5"/></g><path d="M50 52 L50 94" stroke="#000" stroke-width="0"/></mask></defs><path d="M50 92C16 82 4 52 18 28 28 12 44 14 50 24 56 14 72 12 82 28 96 52 84 82 50 92Z" fill="var(--leaf)" mask="url(#m)"/><path d="M50 90V30M50 56 30 42M50 56 70 42M50 72 28 62M50 72 72 62" stroke="var(--young)" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+<div><h1>Guide Monstera</h1><p>Variétés, soins et croissance de la plante gruyère.</p></div>
+</header>
+<nav role="tablist" id="tabs"></nav>
+<main id="main">
+
+<section id="mes"><h2>Mes monstera</h2><p class="lead">Ajoutez vos plantes en photo : le guide calcule leurs soins et suit leur évolution.</p>
+<div class="alert" id="alert" role="status" hidden></div>
+<div class="btns" style="margin:0 0 14px"><button class="btn" id="addbtn" type="button">Ajouter une monstera</button></div>
+<div class="box calc" id="editor" hidden><h3 id="etitle" style="margin-top:0">Nouvelle monstera</h3>
+<div class="fld">
+<div class="full"><label for="f-photo">Photo (facultative)</label><input id="f-photo" type="file" accept="image/*"></div>
+<div><label for="f-name">Nom</label><input id="f-name" type="text" maxlength="40" placeholder="Ma monstera du salon"></div>
+<div><label for="f-var">Variété</label><select id="f-var"></select></div>
+<div><label for="f-pot">Diamètre du pot (cm)</label><input id="f-pot" type="number" inputmode="numeric" min="8" max="60"></div>
+<div><label for="f-age">Âge approximatif (mois)</label><input id="f-age" type="number" inputmode="numeric" min="0" max="240"></div>
+<div><label for="f-light">Lumière</label><select id="f-light"><option value="faible">Faible</option><option value="moyenne">Moyenne</option><option value="vive">Vive (près d’une fenêtre)</option></select></div>
+<div><label for="f-stake">Tuteur</label><select id="f-stake"><option value="aucun">Aucun</option><option value="coco">Totem en fibre de coco</option><option value="mousse">Tuteur à mousse</option><option value="autre">Bambou ou autre</option></select></div>
+<div class="full"><label for="f-repot">Dernier rempotage</label><select id="f-repot"></select></div>
+</div>
+<div class="btns"><button class="btn" id="f-save" type="button">Enregistrer</button><button class="btn alt" id="f-cancel" type="button">Annuler</button></div></div>
+<p class="note" id="pmsg" role="status"></p>
+<div class="box calc" id="cond"><h3 style="margin-top:0">Conditions et météo</h3>
+<p class="note" style="margin-top:0">Touchez « Utiliser ma position » pour la météo extérieure en direct. Saisissez la température et l’humidité de la pièce : les conseils s’adaptent.</p>
+<div class="fld">
+<div><label for="c-city">Ville</label><input id="c-city" type="text" maxlength="40"></div>
+<div><label for="c-heat">Chauffage</label><select id="c-heat"><option value="0">Éteint</option><option value="1">Allumé</option></select></div>
+<div><label for="c-temp">Température de la pièce (°C)</label><input id="c-temp" type="number" inputmode="decimal" min="0" max="45"></div>
+<div><label for="c-hum">Humidité de l’air (%)</label><input id="c-hum" type="number" inputmode="numeric" min="10" max="100"></div>
+<div class="full"><label for="c-min">Minimum extérieur prévu (°C), pour les plantes sorties</label><input id="c-min" type="number" inputmode="decimal" min="-30" max="40"></div>
+</div>
+<div class="btns" style="margin-top:0"><button class="btn alt" id="c-geo" type="button">Utiliser ma position</button></div>
+<p class="note" id="c-msg" role="status"></p>
+<ul id="c-notes"></ul></div>
+<div class="box calc" id="keybox"><h3 style="margin-top:0">Analyse de photo</h3>
+<p class="note" style="margin-top:0">L’analyse utilise votre propre clé API Anthropic (console.anthropic.com). La clé reste sur ce téléphone et chaque analyse est facturée à votre compte API.</p>
+<label for="k-in">Clé API</label><input id="k-in" type="password" autocomplete="off" placeholder="sk-ant-…">
+<div class="btns" style="margin-top:0"><button class="btn" id="k-save" type="button">Enregistrer la clé</button><button class="btn alt" id="k-del" type="button">Supprimer la clé</button></div>
+<p class="note" id="k-msg" role="status"></p></div>
+<div id="plants"></div>
+<p class="note" id="store"></p></section>
+<section id="varietes" hidden><h2>Variétés</h2><p class="lead">Les sept monstera les plus courantes en intérieur.</p><div id="vars"></div></section>
+
+<section id="entretien" hidden><h2>Entretien</h2><p class="lead">Une plante tropicale facile si elle a de la lumière et de l’air un peu humide.</p>
+<table><tr><th>Lumière</th><td>Vive mais indirecte. Évitez le soleil direct de midi, qui brûle les feuilles.</td></tr>
+<tr><th>Température</th><td>18 à 27 °C. Jamais en dessous de 12 °C.</td></tr>
+<tr><th>Humidité</th><td>50 à 60 % idéal. Au-dessous de 40 %, les pointes brunissent.</td></tr>
+<tr><th>Feuilles</th><td>Essuyez-les avec un chiffon humide tous les 15 jours. Faites tourner le pot d’un quart de tour chaque semaine.</td></tr>
+<tr><th>Racines aériennes</th><td>Normales. Ne les coupez pas : guidez-les vers le tuteur ou dans le terreau.</td></tr></table>
+<div class="box warn"><p><b>Toxique pour les chats et les chiens.</b> Les feuilles contiennent des cristaux d’oxalate de calcium : irritation de la bouche, hypersalivation, vomissements. Placez la plante hors de portée.</p></div>
+<h3>Lire les feuilles</h3>
+<ul><li><b>Jaunes et molles :</b> trop d’eau, ou pot sans drainage.</li><li><b>Pointes brunes et sèches :</b> air trop sec ou arrosage trop espacé.</li><li><b>Sans fentes ni trous :</b> manque de lumière, ou plante encore jeune.</li><li><b>Tiges longues et pâles :</b> manque de lumière.</li><li><b>Taches brunes humides :</b> excès d’eau ou champignon, aérez et réduisez l’arrosage.</li></ul></section>
+
+<section id="plantation" hidden><h2>Plantation</h2><p class="lead">Un substrat aéré qui drainent vite, c’est la clé.</p>
+<h3>Mélange conseillé</h3>
+<ul><li>40 % de terreau d’intérieur</li><li>30 % d’écorce de pin</li><li>20 % de perlite ou de pouzzolane</li><li>10 % de fibre de coco ou de charbon horticole</li></ul>
+<h3>Rempoter</h3>
+<ul><li>Au printemps, quand la plante repart.</li><li>Posez 3 cm de billes d’argile au fond si le pot est profond.</li><li>Placez la motte au même niveau qu’avant, sans enterrer la base des tiges.</li><li>Installez le tuteur <b>avant</b> de remplir, pour ne pas blesser les racines.</li><li>Arrosez à fond, puis laissez bien égoutter.</li></ul>
+<h3>Bouturer</h3>
+<p>Coupez sous un nœud portant une racine aérienne, avec au moins une feuille. Plongez-la dans l’eau (lumière vive, eau changée chaque semaine) ou dans de la sphaigne humide. Les racines sortent en 3 à 6 semaines : rempotez quand elles font 5 à 8 cm.</p></section>
+
+<section id="bouturage" hidden><h2>Bouturage</h2><p class="lead">Multipliez votre monstera au printemps ou au début de l’été, quand elle est en pleine pousse.</p>
+<h3>Avant de couper</h3>
+<ul><li>Désinfectez un sécateur ou un couteau à l’alcool.</li><li>Repérez un <b>nœud</b> : le renflement d’où partent une feuille et souvent une racine aérienne. Sans nœud, la bouture ne fait pas de racines.</li><li>Coupez environ 1 cm sous le nœud, en gardant au moins une feuille.</li><li>Pour une variété panachée, la bouture doit porter une partie verte, sinon elle ne survit pas.</li></ul>
+<h3>Quatre techniques</h3>
+<div class="box"><p><b>Dans l’eau.</b> Le nœud est immergé, la feuille reste dehors. Eau à température ambiante changée chaque semaine, lumière vive sans soleil direct. Racines en 2 à 6 semaines. Rempotez quand elles font 5 à 8 cm : les racines d’eau sont fragiles si on attend trop.</p></div>
+<div class="box"><p><b>Dans la sphaigne ou la perlite, en mini-serre.</b> Substrat humide mais jamais détrempé, boîte ou sac transparent entrouvert, 20 à 26 °C. Aérez chaque jour. Les racines obtenues sont plus solides et la reprise en pot est plus sûre.</p></div>
+<div class="box"><p><b>Directement en terreau.</b> Laissez sécher la coupe une à deux heures, plantez dans un mélange aéré (voir Plantation), gardez-le légèrement humide. Plus lent et plus risqué, mais sans rempotage ensuite.</p></div>
+<div class="box"><p><b>Marcottage aérien.</b> Sur la plante mère, enveloppez un nœud muni d’une racine aérienne dans de la sphaigne humide, maintenue par un film. Coupez quand les racines se voient à travers le film. La méthode la plus sûre pour une grande plante ou une variété rare.</p></div>
+<h3>Si ça ne marche pas</h3>
+<ul><li><b>Tige noire et molle :</b> recoupez au-dessus de la partie pourrie et recommencez.</li><li><b>Pas de racines après 6 semaines :</b> plus de chaleur, plus de lumière, et vérifiez la présence d’un nœud.</li><li><b>Feuille qui jaunit :</b> normal si la bouture fait des racines, la feuille peut être sacrifiée.</li></ul></section>
+<section id="parasites" hidden><h2>Parasites</h2><p class="lead">Inspectez le dessous des feuilles et les aisselles à chaque arrosage : plus on agit tôt, plus c’est simple.</p>
+<div class="box calc"><label for="sym">Quel symptôme voyez-vous ?</label>
+<select id="sym"><option value="">Choisissez un symptôme</option><option value="0">Amas blancs cotonneux aux aisselles des feuilles</option><option value="1">Petites bosses brunes sur les tiges et les nervures</option><option value="2">Fines toiles et points jaunes sous les feuilles</option><option value="3">Traînées argentées, points noirs, feuilles déformées</option><option value="4">Petits moucherons noirs autour du pot</option><option value="5">Feuilles et tiges collantes</option><option value="6">Jeunes pousses couvertes de petits insectes</option><option value="7">Nuage de minuscules mouches blanches quand on secoue</option><option value="8">Taches brunes molles, tiges noires, odeur de moisi</option></select>
+<div class="out" id="symout" aria-live="polite" style="min-height:0"></div></div>
+<h3>Protocole de traitement</h3>
+<ul><li>Isolez la plante des autres.</li><li>Douchez-la à l’eau tiède, dessous des feuilles compris, et retirez les feuilles très atteintes.</li><li>Testez le produit sur une feuille et attendez 24 heures.</li><li>Traitez le soir, hors soleil direct, pour éviter les brûlures.</li><li>Recommencez chaque semaine pendant 3 à 4 semaines : les œufs survivent au premier passage.</li><li>Savon noir : une cuillère à soupe de savon noir liquide par litre d’eau tiède. Huile de neem : diluée selon l’étiquette.</li></ul>
+<div class="box warn"><p>Chats et chiens : la monstera est déjà toxique pour eux. Tenez-les à l’écart pendant les traitements, jusqu’à ce que les feuilles soient sèches, et ne laissez pas d’alcool ni d’huile à leur portée.</p></div>
+<h3>Prévenir</h3>
+<ul><li>Gardez toute nouvelle plante en quarantaine 2 à 3 semaines.</li><li>Essuyez les feuilles tous les 15 jours.</li><li>Visez 50 à 60 % d’humidité : l’air sec favorise les araignées rouges.</li><li>Évitez l’excès d’eau, qui attire les moucherons et fait pourrir les racines.</li><li>Désinfectez vos outils entre deux plantes.</li></ul></section>
+<section id="arrosage" hidden><h2>Arrosage</h2><p class="lead">Arrosez quand la terre est sèche sur les 3 à 5 premiers centimètres : enfoncez un doigt.</p>
+<div class="box calc"><label for="saison">Saison</label>
+<select id="saison"><option value="1">Printemps / été</option><option value="2">Automne</option><option value="3">Hiver</option></select>
+<label for="lum">Lumière de la pièce</label>
+<select id="lum"><option value="0">Très lumineuse</option><option value="1" selected>Lumineuse</option><option value="2">Peu lumineuse</option></select>
+<div class="out" id="outw" aria-live="polite"></div></div>
+<ul><li>Arrosez lentement jusqu’à ce que l’eau sorte par les trous de drainage.</li><li>Videz la soucoupe après 15 minutes.</li><li>Eau à température ambiante. Si votre eau est très calcaire, laissez-la reposer une nuit ou utilisez de l’eau de pluie.</li><li>En cas de doute, attendez un jour de plus : elle supporte mieux la soif que l’excès d’eau.</li></ul></section>
+
+<section id="engrais" hidden><h2>Engrais</h2><p class="lead">La monstera a besoin d’engrais pendant sa pousse, d’avril à septembre.</p>
+<table><tr><th>Type</th><td>Engrais liquide pour plantes vertes, équilibré (par exemple 20-20-20 ou un NPK riche en azote).</td></tr>
+<tr><th>Dose</th><td>La moitié de la dose indiquée sur l’emballage.</td></tr>
+<tr><th>Rythme</th><td>Toutes les 2 à 4 semaines au printemps et en été. Rien d’octobre à mars.</td></tr>
+<tr><th>Alternative</th><td>Engrais à libération lente en bâtonnets ou billes, une fois au printemps.</td></tr></table>
+<ul><li>Arrosez toujours avant de fertiliser : jamais sur terre sèche.</li><li>Rincez le terreau à l’eau claire tous les 3 mois pour évacuer les sels.</li><li>Bords des feuilles brûlés et croûte blanche sur la terre : trop d’engrais, rincez abondamment.</li></ul></section>
+
+<section id="tuteur" hidden><h2>Tuteur</h2><p class="lead">Dans la nature, la monstera grimpe sur les arbres. Sans appui, elle s’étale et ses feuilles restent petites.</p>
+<table><tr><th>Totem en fibre de coco</th><td>Le plus courant. Les racines aériennes s’y accrochent. Gardez-le légèrement humide.</td></tr>
+<tr><th>Tuteur à mousse (sphaigne)</th><td>Le meilleur pour de grandes feuilles fendues. Se vaporise souvent.</td></tr>
+<tr><th>Bambou ou treillis</th><td>Solide et discret, mais les racines s’y fixent moins.</td></tr></table>
+<ul><li>Choisissez un tuteur d’au moins 1,5 fois la hauteur actuelle de la plante.</li><li>Enfoncez-le près de la tige principale, jusqu’au fond du pot.</li><li>Fixez la tige avec des liens souples, sans serrer, tous les 20 à 30 cm.</li><li>Orientez les racines aériennes vers le tuteur.</li></ul></section>
+
+<section id="pot" hidden><h2>Pot</h2><p class="lead">Un pot trop grand garde l’eau et fait pourrir les racines.</p>
+<div class="box calc"><label for="dia">Diamètre du pot actuel (cm)</label>
+<input id="dia" type="number" inputmode="numeric" min="8" max="60" value="17">
+<div class="out" id="outp" aria-live="polite"></div></div>
+<ul><li>Prenez un pot de 2 à 5 cm de plus en diamètre, pas davantage.</li><li>Des trous de drainage sont indispensables. Sinon, gardez le pot en plastique dans un cache-pot.</li><li>Terre cuite : sèche vite, stable pour une grande plante. Plastique : garde l’humidité plus longtemps.</li><li>Rempotez tous les 1,5 à 2 ans quand elle est jeune, tous les 2 à 3 ans quand elle est adulte.</li></ul>
+<h3>Il est temps de rempoter si</h3>
+<ul><li>des racines sortent par le fond du pot ;</li><li>l’eau traverse sans être absorbée ;</li><li>la croissance s’arrête au printemps ;</li><li>la plante est instable.</li></ul></section>
+
+<section id="age" hidden><h2>Âge et maturité</h2><p class="lead">Les fentes et les trous apparaissent avec l’âge, mais surtout avec la lumière et le tuteur.</p>
+<ol class="tl">
+<li><strong>0 à 6 mois : bouture</strong>Racines et première feuille. Feuilles entières en forme de cœur.</li>
+<li><strong>6 mois à 1 an : jeune plante</strong>3 à 5 feuilles, encore sans fentes.</li>
+<li><strong>1 à 2 ans : adolescence</strong>Les premières encoches apparaissent sur les nouvelles feuilles.</li>
+<li><strong>2 à 4 ans : fenestration</strong>Fentes et trous nets sur les feuilles de 25 à 40 cm. Le tuteur fait la différence.</li>
+<li><strong>4 à 5 ans : plante mature</strong>1,5 à 2 m, grandes feuilles très découpées, racines aériennes épaisses.</li>
+<li><strong>Après 5 ans : floraison possible</strong>Rare en intérieur : une spathe blanche, puis un fruit comestible mûr après environ un an. Ne mangez que le fruit bien mûr.</li></ol>
+<p class="lead">Ces durées sont des repères pour une culture soignée en intérieur. Une plante sous-éclairée ou sans tuteur met souvent le double.</p></section>
+</main>
+<script>
+var T=[["mes","Mes monstera"],["varietes","Variétés"],["entretien","Entretien"],["plantation","Plantation"],["bouturage","Bouturage"],["arrosage","Arrosage"],["engrais","Engrais"],["parasites","Parasites"],["tuteur","Tuteur"],["pot","Pot"],["age","Âge et maturité"]];
+var V=[
+["Monstera deliciosa","La classique","Grandes feuilles vertes à fentes et trous. La plus robuste et la plus facile.","1 à 3 m en intérieur","Débutant"],
+["Monstera deliciosa ’Albo Variegata’","L’albo","Feuilles panachées de blanc crème. Rare, chère, plus lente. Coupez les tiges entièrement blanches.","1 à 2 m","Confirmé"],
+["Monstera deliciosa ’Thai Constellation’","La constellation","Éclaboussures crème stables sur fond vert. Plus tolérante que l’albo.","1 à 3 m","Intermédiaire"],
+["Monstera adansonii","La petite perforée","Petites feuilles criblées de trous. Retombante ou grimpante. Aime l’humidité et supporte mal la sécheresse.","1 à 2 m de longueur","Débutant"],
+["Monstera obliqua","La dentelle","Feuilles très fines, plus de trous que de feuille. Rare et fragile : elle exige une forte humidité. Souvent confondue avec adansonii.","1 à 2 m","Expert"],
+["Monstera dubia","La rampante","Jeune, elle colle ses feuilles argentées à son support. Adulte, elle change de forme. Il lui faut un tuteur.","Jusqu’à 2 m","Intermédiaire"],
+["Monstera standleyana ’Aurea’","La panachée allongée","Feuilles ovales allongées bordées de crème. Pas de fentes. Compacte et grimpante.","1 à 2 m","Débutant"]];
+var nav=document.getElementById("tabs");
+T.forEach(function(t,i){var b=document.createElement("button");b.className="tab";b.type="button";b.setAttribute("role","tab");b.id="t-"+t[0];b.textContent=t[1];b.setAttribute("aria-selected",i==0);b.onclick=function(){show(t[0])};nav.appendChild(b)});
+function show(id){T.forEach(function(t){document.getElementById(t[0]).hidden=t[0]!=id;document.getElementById("t-"+t[0]).setAttribute("aria-selected",t[0]==id)});document.getElementById("t-"+id).scrollIntoView({inline:"center",block:"nearest"});window.scrollTo(0,0)}
+document.getElementById("vars").innerHTML=V.map(function(v){return '<div class="box var"><h3>'+v[1]+'</h3><p class="sci">'+v[0]+'</p><p>'+v[2]+'</p><p class="meta"><span><b>Taille :</b> '+v[3]+'</span><span><b>Niveau :</b> '+v[4]+'</span></p></div>'}).join("");
+var base={1:[7,10],2:[10,14],3:[14,21]};
+function w(){var s=+document.getElementById("saison").value,l=+document.getElementById("lum").value,r=base[s],f=[0.85,1,1.25][l],a=Math.round(r[0]*f),b=Math.round(r[1]*f);
+document.getElementById("outw").innerHTML="Vérifiez la terre tous les 3 jours.<b>Arrosage environ tous les "+a+" à "+b+" jours</b>"}
+document.getElementById("saison").onchange=w;document.getElementById("lum").onchange=w;w();
+function p(){var d=parseFloat(document.getElementById("dia").value),o=document.getElementById("outp");
+if(!d||d<8||d>60){o.textContent="Entrez un diamètre entre 8 et 60 cm.";return}
+o.innerHTML="Prochain pot :<b>"+(d+2)+" à "+(d+5)+" cm de diamètre</b>Visez environ "+(d+3)+" cm."}
+document.getElementById("dia").oninput=p;p();
+
+(function(){
+var DAY=864e5,plants=[],cond={},editing=null,sampleFn=null,store={mode:"local",col:null},q=Promise.resolve();
+var SN={1:"printemps-été",2:"entre-saison",3:"hiver"};
+var TIPS=["Très tolérante : arrosez quand le haut de la terre est sec.","Lumière vive indispensable. Coupez toute tige entièrement blanche : elle ne survit pas.","Lumière vive pour garder les taches crème. Elle reverdit si elle manque de lumière.","Aime l’humidité : groupez-la avec d’autres plantes. Fragile si l’air est sec.","Exige une humidité forte (plus de 60 %). Ne la laissez jamais sécher.","Elle plaque ses feuilles contre son support : un tuteur à mousse l’aide à passer à la forme adulte.","Compacte : rempotage moins fréquent, tuteur utile pour grimper."];
+function $(i){return document.getElementById(i)}
+function h(t,a,k){var e=document.createElement(t);for(var x in a||{}){if(x=="class")e.className=a[x];else if(x=="text")e.textContent=a[x];else if(x.slice(0,2)=="on")e[x]=a[x];else e.setAttribute(x,a[x])}(k||[]).forEach(function(c){if(c)e.appendChild(c)});return e}
+function fmt(t){return new Date(t).toLocaleDateString("fr-FR",{day:"numeric",month:"short"})}
+function msg(s){$("pmsg").textContent=s||""}
+function season(){var m=new Date().getMonth()+1;if(cond.south)m=(m+5)%12+1;return m>=4&&m<=9?1:(m==3||m==10)?2:3}
+function days(t){return Math.floor((Date.now()-t)/DAY)}
+function ageNow(p){return Math.round(p.ageMonths+(Date.now()-(p.ageAt||p.addedAt))/(30.4*DAY))}
+function ageTxt(m){var y=Math.floor(m/12),r=m%12;return (y?y+(y>1?" ans":" an"):"")+(y&&r?" ":"")+((r||!y)?r+" mois":"")}
+function interval(p){var b={1:[7,10],2:[10,14],3:[14,21]}[season()],f={vive:.85,moyenne:1,faible:1.25}[p.light]||1,pf=p.potCm<14?.85:p.potCm>=25?1.15:1;return Math.round((b[0]+b[1])/2*f*pf*cf())}
+function stage(a){return a<6?"Phase bouture : feuilles entières en forme de cœur, c’est normal.":a<12?"Jeune plante : misez sur la lumière et un tuteur dès le prochain rempotage.":a<24?"Adolescence : les premières encoches devraient apparaître sur les nouvelles feuilles.":a<48?"Fenestration : fentes et trous nets sur les nouvelles feuilles. Si elles restent entières, plus de lumière et un tuteur.":a<60?"Plante mature : grandes feuilles très découpées, 1,5 à 2 m.":"Plante adulte : une floraison est possible, mais rare en intérieur."}
+function rows(p){
+ var s=season(),iv=interval(p),df=iv-days(p.lastWater||p.addedAt),a=ageNow(p),R=[];
+ R.push(df>0?["Arrosage","Dans "+df+" j (environ tous les "+iv+" jours en "+SN[s]+"). Vérifiez que la terre est sèche sur 3 à 5 cm.",0]:df==0?["Arrosage","À prévoir aujourd’hui si la terre est sèche sur 3 à 5 cm.",1]:["Arrosage","Prévu depuis "+(-df)+" j : touchez la terre et arrosez-la si elle est sèche sur 3 à 5 cm.",1]);
+ if(s!=1)R.push(["Engrais","Pause jusqu’en avril : pas d’engrais en ce moment.",0]);
+ else{var fd=p.lastFert?days(p.lastFert):null;R.push(fd===null||fd>=21?["Engrais","À donner : demi-dose d’engrais liquide, sur terre déjà humide.",1]:["Engrais","Prochain dans "+(21-fd)+" j (demi-dose, terre humide).",0])}
+ var lim=a<24?18:30,np=p.potCm+3;
+ if(p.lastRepot==null)R.push(["Pot","Rempotage inconnu : regardez si des racines sortent par le fond. Prochain pot : "+np+" cm.",0]);
+ else{var mo=(Date.now()-p.lastRepot)/(30.4*DAY);R.push(mo>=lim?["Pot",(s==1?"Rempotage conseillé":"Rempotage à prévoir en avril")+" : pot de "+np+" cm (2 à 5 cm de plus).",1]:["Pot","Rempotage dans environ "+Math.max(1,Math.round(lim-mo))+" mois, dans un pot de "+np+" cm.",0])}
+ var none=p.stake=="aucun";
+ R.push(["Tuteur",none?(a>=12?"Ajoutez un totem de coco ou de mousse : sans appui, les feuilles restent petites.":"Prévoyez un tuteur au prochain rempotage."):"Guidez les racines aériennes vers le tuteur et gardez-le légèrement humide.",none&&a>=12?1:0]);
+ if(p.light=="faible")R.push(["Lumière","Rapprochez-la d’une fenêtre (sans soleil direct) : sans lumière, pas de fentes et des tiges pâles.",1]);
+ if(p.light=="vive")R.push(["Lumière","Protégez-la du soleil direct de midi derrière une vitre.",0]);
+ R.push(["Stade",stage(a),0]);
+ if(TIPS[p.variety])R.push(["Variété",TIPS[p.variety],0]);
+ return R}
+function lsRead(){try{return JSON.parse(localStorage.getItem("monstera-plants")||"[]")}catch(e){return[]}}
+function lsWrite(){try{localStorage.setItem("monstera-plants",JSON.stringify(plants))}catch(e){msg("Stockage plein : supprimez une plante ou une photo.")}}
+function fail(e){msg("Enregistrement impossible : "+((e&&e.message)||"erreur"))}
+function persist(p){q=q.then(function(){if(store.mode=="db"){var d=Object.assign({},p);delete d.id;return store.col.doc(p.id).set(d)}lsWrite()}).catch(fail);return q}
+function unpersist(id){q=q.then(function(){if(store.mode=="db")return store.col.doc(id).delete();lsWrite()}).catch(fail);return q}
+function shrink(f){return new Promise(function(res,rej){var u=URL.createObjectURL(f),i=new Image();i.onload=function(){var s=Math.min(1,440/Math.max(i.width,i.height)),c=document.createElement("canvas");c.width=Math.round(i.width*s);c.height=Math.round(i.height*s);c.getContext("2d").drawImage(i,0,0,c.width,c.height);URL.revokeObjectURL(u);res(c.toDataURL("image/jpeg",.62))};i.onerror=function(){rej(new Error("Photo illisible : essayez un fichier JPEG ou PNG."))};i.src=u})}
+function toBlob(u){var b=atob(u.split(",")[1]),a=new Uint8Array(b.length);for(var i=0;i<b.length;i++)a[i]=b.charCodeAt(i);return new Blob([a],{type:"image/jpeg"})}
+function log(p,type){p.log=[{t:Date.now(),type:type}].concat(p.log||[]).slice(0,12)}
+function act(p,field,type){p[field]=Date.now();log(p,type);persist(p);render()}
+function addPhoto(p,f){if(!f)return;msg("");shrink(f).then(function(img){p.photos=[{t:Date.now(),img:img}].concat(p.photos||[]).slice(0,4);log(p,"photo");persist(p);render()}).catch(function(e){msg(e.message)})}
+var LT={arrosage:"arrosée",engrais:"fertilisée",photo:"photo ajoutée",rempotage:"rempotée"};
+async function analyse(p,box,btn){
+ var ph=(p.photos||[])[0];if(!ph||!sampleFn)return;
+ btn.disabled=true;box.hidden=false;box.textContent="Analyse en cours…";
+ var v=V[p.variety]?V[p.variety][0]:"variété inconnue";
+ var prompt="Tu es un expert en plantes d’intérieur. La photo montre une monstera. Contexte : "+v+", pot de "+p.potCm+" cm, lumière "+p.light+", tuteur : "+p.stake+", âge environ "+ageTxt(ageNow(p))+", saison "+SN[season()]+", dernier arrosage il y a "+days(p.lastWater||p.addedAt)+" jours. Réponds en français, en texte brut sans markdown, 150 mots maximum, en trois parties : État général ; Problèmes visibles (feuilles jaunes, pointes brunes, taches, tiges étirées, absence de fentes) ; Trois actions concrètes à faire cette semaine. Si la photo ne montre pas clairement la plante, dis-le. Reste prudent : une photo ne suffit pas à poser un diagnostic certain.";
+ try{var r=await sampleFn(prompt,{images:[toBlob(ph.img)],cache:false,onText:function(o){box.textContent=o.text}});
+  p.analysis={t:Date.now(),text:r.text};box.textContent=r.text;persist(p);render()}
+ catch(e){box.textContent=e&&e.code=="bad_key"?"Clé API refusée : vérifiez-la dans l’encadré « Analyse de photo ».":e&&e.code=="offline"?"Pas de connexion : réessayez en ligne.":e&&e.code=="rate_limited"?"Trop de demandes : réessayez dans une minute.":e&&e.code=="not_granted"?"Autorisation refusée : l’analyse n’est pas disponible.":"L’analyse a échoué. Réessayez plus tard.";btn.disabled=false}}
+function card(p){
+ var ph=(p.photos||[])[0],R=rows(p);
+ var left=ph?h("img",{class:"ph",src:ph.img,alt:"Photo de "+p.name}):h("div",{class:"ph empty",text:"Pas de photo"});
+ var box=h("div",{class:"ai"});box.hidden=!p.analysis;if(p.analysis)box.textContent=p.analysis.text;
+ var info=h("div",{},[h("h3",{text:p.name}),h("p",{class:"sub",text:(V[p.variety]?V[p.variety][0]:"Variété à identifier")+", "+ageTxt(ageNow(p))+", pot "+p.potCm+" cm, lumière "+p.light})].concat(R.map(function(r){return h("div",{class:"row"+(r[2]?" warn":"")},[h("b",{text:r[0]}),h("span",{text:r[1]})])})));
+ var ab=null;
+ var del=h("button",{class:"btn danger",type:"button",text:"Supprimer",onclick:function(){if(this.dataset.c){plants=plants.filter(function(x){return x.id!=p.id});unpersist(p.id);render()}else{this.dataset.c=1;this.textContent="Confirmer la suppression"}}});
+ var bt=[h("button",{class:"btn",type:"button",text:"J’ai arrosé",onclick:function(){act(p,"lastWater","arrosage")}}),
+  h("button",{class:"btn alt",type:"button",text:"J’ai fertilisé",onclick:function(){act(p,"lastFert","engrais")}}),
+  h("label",{class:"btn alt"},[document.createTextNode("Photo de suivi"),h("input",{type:"file",accept:"image/*",class:"hid",onchange:function(){addPhoto(p,this.files[0])}})])];
+ if(sampleFn&&ph){ab=h("button",{class:"btn alt",type:"button",text:"Analyser avec Claude"});ab.onclick=function(){analyse(p,box,ab)};bt.push(ab)}
+ bt.push(h("button",{class:"btn alt",type:"button",text:"Modifier",onclick:function(){openForm(p)}}),del);
+ info.appendChild(h("div",{class:"btns"},bt));
+ info.appendChild(box);
+ if(p.analysis)info.appendChild(h("p",{class:"note",text:"Analyse du "+fmt(p.analysis.t)+". Elle reste indicative."}));
+ if((p.photos||[]).length>1){info.appendChild(h("div",{class:"th"},p.photos.map(function(x){return h("figure",{},[h("img",{src:x.img,alt:"Photo du "+fmt(x.t)}),h("figcaption",{text:fmt(x.t)})])})))}
+ if((p.log||[]).length)info.appendChild(h("p",{class:"hist",text:p.log.slice(0,4).map(function(l){return fmt(l.t)+" : "+(LT[l.type]||l.type)}).join(", ")}));
+ return h("div",{class:"box pc"},[left,info])}
+function render(){
+ var L=$("plants");L.textContent="";condView();
+ var due=plants.filter(function(p){return interval(p)-days(p.lastWater||p.addedAt)<=0}).map(function(p){return p.name});
+ $("alert").hidden=!due.length;$("alert").textContent=due.length?"À vérifier aujourd’hui (arrosage) : "+due.join(", ")+".":"";
+ if(!plants.length)L.appendChild(h("p",{class:"lead",text:"Aucune monstera pour l’instant. Ajoutez-en une avec sa photo : le guide calcule arrosage, engrais, rempotage et tuteur."}));
+ plants.forEach(function(p){L.appendChild(card(p))});
+ $("store").textContent=(store.mode=="db"?"Vos plantes sont enregistrées sur votre compte.":"Vos plantes sont enregistrées dans ce navigateur uniquement.")+" Les 4 dernières photos de chaque plante sont conservées."}
+function openForm(p){
+ editing=p;msg("");$("editor").hidden=false;
+ $("f-name").value=p?p.name:"";$("f-var").value=p?p.variety:-1;$("f-pot").value=p?p.potCm:17;$("f-light").value=p?p.light:"moyenne";$("f-stake").value=p?p.stake:"aucun";$("f-age").value=p?ageNow(p):12;$("f-photo").value="";
+ $("f-repot").innerHTML=(p?'<option value="keep">Ne pas modifier</option>':'')+'<option value="0">Je viens de la rempoter</option><option value="3">Il y a moins de 6 mois</option><option value="12">Il y a 6 à 18 mois</option><option value="24">Il y a plus de 18 mois</option><option value="-1">Je ne sais pas</option>';
+ $("f-repot").value=p?"keep":"-1";$("etitle").textContent=p?"Modifier "+p.name:"Nouvelle monstera";$("editor").scrollIntoView({block:"start"})}
+async function save(){
+ var f=$("f-photo").files[0],p=editing||{id:"p"+Date.now().toString(36),addedAt:Date.now(),photos:[],log:[]},oldPot=p.potCm,rp=$("f-repot").value;
+ p.name=$("f-name").value.trim()||"Ma monstera";p.variety=parseInt($("f-var").value,10);p.potCm=Math.min(60,Math.max(8,parseFloat($("f-pot").value)||17));
+ p.light=$("f-light").value;p.stake=$("f-stake").value;p.ageMonths=Math.max(0,parseInt($("f-age").value,10)||0);p.ageAt=Date.now();
+ if(rp=="keep"){if(oldPot&&oldPot!=p.potCm){p.lastRepot=Date.now();log(p,"rempotage")}}
+ else if(rp=="-1")p.lastRepot=null;
+ else{p.lastRepot=Date.now()-parseInt(rp,10)*30.4*DAY;if(rp=="0")log(p,"rempotage")}
+ msg("Enregistrement…");
+ try{if(f){var img=await shrink(f);p.photos=[{t:Date.now(),img:img}].concat(p.photos||[]).slice(0,4);log(p,"photo")}}catch(e){msg(e.message);return}
+ if(!editing)plants.unshift(p);
+ await persist(p);$("editor").hidden=true;editing=null;if(!$("pmsg").textContent.indexOf("Enregistrement…"))msg("");render()}
+V.forEach(function(v,i){var o=document.createElement("option");o.value=i;o.textContent=v[0];$("f-var").appendChild(o)});
+var o=document.createElement("option");o.value=-1;o.textContent="Je ne sais pas encore";$("f-var").appendChild(o);
+$("addbtn").onclick=function(){openForm(null)};
+$("f-save").onclick=save;
+$("f-cancel").onclick=function(){$("editor").hidden=true;editing=null;msg("")};
+async function init(){
+ try{if(window.claude&&claude.use){
+  try{var u=await claude.use("user"),d=await claude.use("db");
+   if(u&&d){var id=await u.id();if(id){store.col=d.collection("data/users/"+id);var sn=await store.col.get();plants=sn.docs.map(function(x){return Object.assign({id:x.id},x.data())});store.mode="db"}}}catch(e){store.mode="local"}
+  try{var sm=await claude.use("sample");if(sm){var l=await sm.limits();if(l&&l.images)sampleFn=sm}}catch(e){}}}catch(e){}
+ if(store.mode=="local")plants=lsRead();
+ plants.sort(function(a,b){return b.addedAt-a.addedAt});render()}
+try{cond=JSON.parse(localStorage.getItem("monstera-cond")||"{}")}catch(e){cond={}}
+function saveCond(){try{localStorage.setItem("monstera-cond",JSON.stringify(cond))}catch(e){}}
+function cf(){var f=1,t=parseFloat(cond.temp),u=parseFloat(cond.hum);if(t>=24)f*=.85;else if(t<=18)f*=1.2;if(u<40)f*=.9;else if(u>65)f*=1.1;if(cond.heat)f*=.9;return f}
+function cmsg(s){$("c-msg").textContent=s||""}
+function condView(){
+ var n=[],t=parseFloat(cond.temp),u=parseFloat(cond.hum),m=parseFloat(cond.min);
+ if(t<15)n.push("Pièce trop froide : éloignez les plantes des fenêtres et des courants d’air.");else if(t<18)n.push("Pièce fraîche : la croissance ralentit, espacez les arrosages.");else if(t>28)n.push("Pièce très chaude : surveillez la terre plus souvent et évitez le soleil direct.");
+ if(u<40)n.push("Air sec : risque d’araignées rouges et de pointes brunes. Groupez les plantes, posez-les sur un plateau de billes d’argile humides ou utilisez un humidificateur.");else if(u>70)n.push("Air très humide : aérez chaque jour et évitez de mouiller le feuillage le soir (moisissures, moucherons).");
+ if(cond.heat)n.push("Chauffage allumé : l’air s’assèche. Gardez la plante à plus d’un mètre d’un radiateur.");
+ if(m<=5)n.push("Gel ou presque : rentrez toutes les monstera sorties dehors.");else if(m<=12)n.push("Moins de 12 °C dehors : rentrez les monstera, elles souffrent en dessous.");
+ if(cond.lat!=null)n.push("Position enregistrée (latitude "+cond.lat+" °, hémisphère "+(cond.south?"sud : saisons inversées dans les conseils":"nord")+").");
+ if(cond.wx){n.push("Dehors : "+Math.round(cond.wx.now)+" °C, minimum "+Math.round(cond.wx.min)+" °C et maximum "+Math.round(cond.wx.max)+" °C sur 3 jours.");if(cond.wx.max>=32)n.push("Forte chaleur annoncée : éloignez les plantes des vitres au soleil et surveillez la terre chaque jour.")}
+ var pct=Math.round((cf()-1)*100);if(pct)n.push("Intervalle d’arrosage ajusté de "+(pct>0?"+":"")+pct+" % selon la pièce.");
+ var c=$("c-notes");c.textContent="";n.forEach(function(x){c.appendChild(h("li",{text:x}))})}
+[["c-city","city"],["c-temp","temp"],["c-hum","hum"],["c-min","min"]].forEach(function(x){var e=$(x[0]);e.value=cond[x[1]]==null?"":cond[x[1]];e.oninput=function(){cond[x[1]]=this.value;saveCond();render()}});
+$("c-heat").value=cond.heat?"1":"0";$("c-heat").onchange=function(){cond.heat=this.value=="1";saveCond();render()};
+$("c-geo").onclick=function(){
+ if(!navigator.geolocation){cmsg("La géolocalisation n’est pas disponible dans cette page.");return}
+ cmsg("Localisation en cours…");
+ navigator.geolocation.getCurrentPosition(function(pos){cond.lat=Math.round(pos.coords.latitude*10)/10;cond.south=pos.coords.latitude<0;cond.lon=Math.round(pos.coords.longitude*10)/10;saveCond();cmsg("");render();wx()},function(){cmsg("Position refusée ou indisponible : le navigateur a peut-être bloqué l’accès. Saisissez les conditions à la main.")},{timeout:10000,maximumAge:3600000})};
+var SY=[["Cochenilles farineuses","retirez-les au coton-tige imbibé d’alcool à 70 °, puis pulvérisez du savon noir dilué tous les 7 jours pendant 4 semaines. Isolez la plante."],["Cochenilles à bouclier","grattez-les doucement avec une brosse à dents souple, puis traitez au savon noir ou à l’huile de neem chaque semaine pendant un mois."],["Araignées rouges","douchez la plante à l’eau tiède, dessous des feuilles compris, augmentez l’humidité, puis pulvérisez du savon noir ou de l’huile de neem tous les 5 à 7 jours pendant 3 semaines."],["Thrips","douchez, retirez les feuilles très abîmées, pulvérisez du savon noir ou de l’huile de neem tous les 5 à 7 jours pendant 4 semaines et posez des pièges collants bleus."],["Moucherons du terreau","laissez sécher les 3 à 4 cm de terre entre deux arrosages, posez des pièges collants jaunes, couvrez la terre d’1 cm de sable ou de perlite et arrosez avec un produit au Bti."],["Miellat","ce film collant trahit des cochenilles, des pucerons ou des aleurodes : inspectez le dessous des feuilles et les aisselles, nettoyez à l’eau savonneuse, puis traitez l’insecte trouvé."],["Pucerons","rincez à la douche, puis pulvérisez du savon noir dilué tous les 3 à 5 jours jusqu’à disparition."],["Aleurodes (mouches blanches)","posez des pièges collants jaunes, secouez la plante le soir pour les déloger, puis pulvérisez du savon noir ou de l’huile de neem tous les 5 jours pendant 3 semaines."],["Pourriture des racines","ce n’est pas un parasite mais un excès d’eau. Sortez la plante du pot, coupez les racines noires et molles, rempotez dans un substrat neuf et aéré, puis espacez les arrosages."]];
+$("sym").onchange=function(){var r=SY[this.value];var o=$("symout");o.textContent=r?r[0]+" : "+r[1]:"";o.style.padding=r?"14px 16px":"0"};
+$("symout").style.padding="0";
+function wx(){if(cond.lat==null||cond.lon==null)return;
+ var u="https://api.open-meteo.com/v1/forecast?latitude="+cond.lat+"&longitude="+cond.lon+"&current=temperature_2m&daily=temperature_2m_min,temperature_2m_max&timezone=auto&forecast_days=3";
+ fetch(u).then(function(r){return r.json()}).then(function(j){var mn=Math.min.apply(null,j.daily.temperature_2m_min),mx=Math.max.apply(null,j.daily.temperature_2m_max);cond.wx={now:j.current.temperature_2m,min:mn,max:mx,at:Date.now()};cond.min=String(Math.round(mn));$("c-min").value=cond.min;saveCond();render()}).catch(function(){cmsg("Météo en direct indisponible : vérifiez la connexion.")})}
+function apiSample(prompt,o){
+ var b=o&&o.images&&o.images[0];
+ return new Promise(function(res,rej){var fr=new FileReader();fr.onload=function(){res(fr.result.split(",")[1])};fr.onerror=function(){rej(new Error("Photo illisible"))};fr.readAsDataURL(b)}).then(function(data){
+  var c=[{type:"image",source:{type:"base64",media_type:"image/jpeg",data:data}},{type:"text",text:prompt}];
+  return fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"content-type":"application/json","x-api-key":localStorage.getItem("monstera-key")||"","anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},body:JSON.stringify({model:"claude-sonnet-5-5",max_tokens:700,messages:[{role:"user",content:c}]})}).catch(function(){var e=new Error("offline");e.code="offline";throw e})
+ }).then(function(r){return r.json().then(function(j){if(!r.ok){var e=new Error((j.error&&j.error.message)||"Erreur API");e.code=r.status==401||r.status==403?"bad_key":r.status==429?"rate_limited":"api";throw e}return{text:j.content.filter(function(x){return x.type=="text"}).map(function(x){return x.text}).join("")}})})}
+function applyKey(){var k="";try{k=localStorage.getItem("monstera-key")||""}catch(e){}sampleFn=k?apiSample:null;$("k-in").value="";$("k-msg").textContent=k?"Clé enregistrée (se termine par "+k.slice(-4)+").":"Aucune clé enregistrée : l’analyse est désactivée."}
+$("k-save").onclick=function(){var v=$("k-in").value.trim();if(v.indexOf("sk-ant-")!=0){$("k-msg").textContent="Cette clé ne ressemble pas à une clé Anthropic (elle commence par sk-ant-).";return}try{localStorage.setItem("monstera-key",v)}catch(e){}applyKey();render()};
+$("k-del").onclick=function(){try{localStorage.removeItem("monstera-key")}catch(e){}applyKey();render()};
+applyKey();
+render();init();
+if(cond.lat!=null&&(!cond.wx||Date.now()-cond.wx.at>36e5))wx();
+})();
+if("serviceWorker" in navigator&&location.protocol.indexOf("http")==0)navigator.serviceWorker.register("sw.js");
+</script>
+</body>
+</html>
